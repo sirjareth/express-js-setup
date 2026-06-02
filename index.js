@@ -8,6 +8,8 @@ const app = express( );
 app.use(express.json());
 
 // Import Routes
+const movieRoutes = require('./routes/movieRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 // DB Connection
 mongoose.connect(process.env.MONGODB_STRING);
@@ -17,7 +19,8 @@ mongoose.connection.once('open', () => {
 });
 
 // Use Routes
-
+app.use('/users', userRoutes);
+app.use('/movies', movieRoutes);
 
 // Server
 if(require.main == module) {
