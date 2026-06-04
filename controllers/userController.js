@@ -7,6 +7,7 @@ const { errorHandler } = require('../auth');
 module.exports.registerUser = async (req, res) => {
   try {
     let newUser = new User({
+      name: req.body.name,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 10)
     });
