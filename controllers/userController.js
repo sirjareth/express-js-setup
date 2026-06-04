@@ -11,7 +11,7 @@ module.exports.registerUser = async (req, res) => {
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 10)
     });
-
+    // try
     await newUser.save();
     res.status(201).send({ message: 'Registered Successfully'});
   } catch (error) {
